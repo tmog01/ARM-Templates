@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "Loc": {
-            "defaultValue": "[resourceGroup().location]",
+            "Value": null,
             "metadata": {
                 "description": "Location to for the resources."
             }
