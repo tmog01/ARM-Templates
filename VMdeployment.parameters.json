@@ -6,19 +6,19 @@
             "value": "VMName"
          },
         "adminUsername": {
-            "value": "Admin-Name
+            "value": "AdminName
         },
         "adminPassword": {
-            "value": "Admin-Password"
+            "value": "AdminPassword"
         },
         "addressPrefixes": {
-            "value": "Address-Prefix"
+            "value": "AddressPrefix"
         },
         "subnetName": {
-            "value": "Subnet-NAme"
+            "value": "SubnetName"
         },
         "subnetPrefix": {
-            "value": "Address-Prefix"
+            "value": "AddressPrefix"
         },
     }
 }
