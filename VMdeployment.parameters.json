@@ -85,9 +85,6 @@
                 "description": "Name of the virtual network"
             }
         },
-        "OSdisks": {
-            "type": "String"
-        },
         "addressPrefixes": {
             "type": "String",
             "metadata": {
