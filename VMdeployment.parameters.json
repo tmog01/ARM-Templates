@@ -3,22 +3,22 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
-            "value": null
+            "value": "VMName"
          },
         "adminUsername": {
-            "value": null
+            "value": "Admin-Name
         },
         "adminPassword": {
-            "value": null
+            "value": "Admin-Password"
         },
         "addressPrefixes": {
-            "value": null
+            "value": "Address-Prefix"
         },
         "subnetName": {
-            "value": null
+            "value": "Subnet-NAme"
         },
         "subnetPrefix": {
-            "value": null
+            "value": "Address-Prefix"
         },
     }
 }
