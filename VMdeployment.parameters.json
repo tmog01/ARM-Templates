@@ -3,44 +3,22 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
-            "Value": null,
-            "type": "String",
-            "metadata": {
-                "description": "Name for the Virtual Machine."
-            }
-        },
+            "Value": null
+         },
         "adminUsername": {
-            "Value": null,
-            "type": "String",
-            "metadata": {
-                "description": "User name for the Virtual Machine."
-            }
+            "Value": null
         },
         "adminPassword": {
-            "Value": null,
-            "type": "SecureString",
-            "metadata": {
-                "description": "Password or ssh key for the Virtual Machine."
-            }
+            "Value": null
         },
         "addressPrefixes": {
-            "type": "String",
-            "metadata": {
-                "description": "Address prefix of the virtual network"
-            }
+            "Value": null
         },
         "subnetName": {
-            "defaultValue": "default",
-            "type": "String",
-            "metadata": {
-                "description": "Name of the subnet"
-            }
+            "Value": null
         },
         "subnetPrefix": {
-            "type": "String",
-            "metadata": {
-                "description": "Subnet prefix of the virtual network"
-            }
+            "Value": null
         },
     }
 }
