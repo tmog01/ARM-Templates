@@ -9,16 +9,16 @@
             "value": "AdminName
         },
         "adminPassword": {
-            "value": "AdminPassword"
+            "value": "AdminPass"
         },
         "addressPrefixes": {
-            "value": "AddressPrefix"
+            "value": "AddrPrefix"
         },
         "subnetName": {
-            "value": "SubnetName"
+            "value": "SnetName"
         },
         "subnetPrefix": {
-            "value": "AddressPrefix"
+            "value": "AddrPrefix"
         },
     }
 }
