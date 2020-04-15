@@ -9,32 +9,32 @@
                 "description": "Location to for the resources."
             }
         },
-        "vmName": {
+        "vmname": {
             "type": "string",
             "metadata": {
                 "description": "Name for the Virtual Machine."
             }
         },
-        "adminUsername": {
+        "adminusername": {
             "type": "string",
             "metadata": {
                 "description": "User name for the Virtual Machine."
             }
         },
-        "adminPassword": {
+        "adminpassword": {
             "type": "securestring",
             "metadata": {
                 "description": "Password or ssh key for the Virtual Machine."
             }
         },
-        "vmSize": {
+        "vmsize": {
             "defaultValue": "Standard_F4s_v2",
             "type": "string",
             "metadata": {
                 "description": "Size for the Virtual Machine."
             }
         },
-        "windowsOSVersion": {
+        "windowsosversion": {
             "defaultValue": "2016-Datacenter",
             "allowedValues": [
                 "2008-R2-SP1",
@@ -50,82 +50,82 @@
                 "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version."
             }
         },
-        "storageNewOrExisting": {
+        "storageneworexisting": {
             "defaultValue": "new",
             "type": "string",
             "metadata": {
                 "description": "Determines whether or not a new storage account should be provisioned."
             }
         },
-        "storageAccountName": {
+        "storageaccountname": {
             "defaultValue": "[concat('storage', uniqueString(resourceGroup().id))]",
             "type": "string",
             "metadata": {
                 "description": "Name of the storage account"
             }
         },
-        "storageAccountType": {
+        "storageaccounttype": {
             "defaultValue": "Standard_LRS",
             "type": "string",
             "metadata": {
                 "description": "Storage account type"
             }
         },
-        "virtualNetworkNewOrExisting": {
+        "virtualnetworknewOrexisting": {
             "defaultValue": "new",
             "type": "string",
             "metadata": {
                 "description": "Determines whether or not a new virtual network should be provisioned."
             }
         },
-        "virtualNetworkName": {
+        "virtualbetworkname": {
             "defaultValue": "VirtualNetwork",
             "type": "string",
             "metadata": {
                 "description": "Name of the virtual network"
             }
         },
-        "addressPref": {
+        "addresspref": {
             "type": "string",
             "metadata": {
                 "description": "Address prefix of the virtual network"
             }
         },
-        "subnetName": {
+        "subnetname": {
             "defaultValue": "default",
             "type": "string",
             "metadata": {
                 "description": "Name of the subnet"
             }
         },
-        "subnetPrefix": {
+        "subnetprefix": {
             "type": "string",
             "metadata": {
                 "description": "Subnet prefix of the virtual network"
             }
         },
-        "virtualNetworkResourceGroupName": {
+        "virtualnetworkresourcegroupName": {
             "defaultValue": "[resourceGroup().name]",
             "type": "string",
             "metadata": {
                 "description": "Name of the resource group for the existing virtual network"
             }
         },
-        "publicIpNewOrExisting": {
+        "publicipneworexisting": {
             "defaultValue": "new",
             "type": "string",
             "metadata": {
                 "description": "Determines whether or not a new public ip should be provisioned."
             }
         },
-        "publicIpName": {
+        "publicipname": {
             "defaultValue": "[concat(parameters('vmName'), '_Pip')]",
             "type": "string",
             "metadata": {
                 "description": "Name of the public ip address"
             }
         },
-        "publicIpResourceGroupName": {
+        "publicipresourcegroupName": {
             "defaultValue": "[resourceGroup().name]",
             "type": "string",
             "metadata": {
@@ -145,23 +145,23 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2017-06-01",
-            "name": "[parameters('storageAccountName')]",
+            "name": "[parameters('storageaccountname')]",
             "location": "[parameters('loc')]",
             "sku": {
-                "name": "[parameters('storageAccountType')]"
+                "name": "[parameters('storageaccounttype')]"
             },
             "kind": "Storage",
-            "condition": "[equals(parameters('storageNewOrExisting'), 'new')]"
+            "condition": "[equals(parameters('storageneworexisting'), 'new')]"
         },
         {
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2017-09-01",
-            "name": "[parameters('publicIpName')]",
+            "name": "[parameters('publicipname')]",
             "location": "[parameters('loc')]",
             "properties": {
                 "publicIPAllocationMethod": "Dynamic"
             },
-            "condition": "[equals(parameters('publicIpNewOrExisting'), 'new')]"
+            "condition": "[equals(parameters('publicipneworexisting'), 'new')]"
         },
         {
             "type": "Microsoft.Network/networkSecurityGroups",
@@ -185,25 +185,25 @@
                     }
                 ]
             },
-            "condition": "[equals(parameters('virtualNetworkNewOrExisting'), 'existing')]"
+            "condition": "[equals(parameters('virtualnetworkneworexisting'), 'existing')]"
         },
         {
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2017-09-01",
-            "name": "[parameters('virtualNetworkName')]",
+            "name": "[parameters('virtualnetworkname')]",
             "location": "[parameters('loc')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
             ],
             "properties": {
                 "addressSpace": {
-                    "addressPrefixes": "[parameters('addressPref')]"
+                    "addressPrefixes": "[parameters('addresspref')]"
                 },
                 "subnets": [
                     {
-                        "name": "[parameters('subnetName')]",
+                        "name": "[parameters('subnetname')]",
                         "properties": {
-                            "addressPrefix": "[parameters('subnetPrefix')]",
+                            "addressPrefix": "[parameters('subnetprefix')]",
                             "networkSecurityGroup": {
                                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
                             }
@@ -211,7 +211,7 @@
                     }
                 ]
             },
-            "condition": "[equals(parameters('virtualNetworkNewOrExisting'), 'new')]"
+            "condition": "[equals(parameters('virtualnetworkneworexisting'), 'new')]"
         },
         {
             "type": "Microsoft.Network/networkInterfaces",
@@ -219,8 +219,8 @@
             "name": "[variables('nicName')]",
             "location": "[parameters('loc')]",
             "dependsOn": [
-                "[parameters('publicIpName')]",
-                "[parameters('virtualNetworkName')]"
+                "[parameters('publicipname')]",
+                "[parameters('virtualnetworkname')]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -229,9 +229,9 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "subnet": {
-                                "id": "[resourceId(parameters('virtualNetworkResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets/', parameters('virtualNetworkName'), parameters('subnetName'))]"
+                                "id": "[resourceId(parameters('virtualNetworkResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets/', parameters('virtualnetworkname'), parameters('subnetname'))]"
                             },
-                            "publicIPAddress": "[if(not(equals(parameters('publicIpNewOrExisting'), 'none')), variables('publicIpAddressId') , json('null'))]"
+                            "publicIPAddress": "[if(not(equals(parameters('publicipneworexisting'), 'none')), variables('publicIpAddressId') , json('null'))]"
                         }
                     }
                 ]
@@ -240,26 +240,26 @@
         {
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2017-03-30",
-            "name": "[parameters('vmName')]",
+            "name": "[parameters('vmname')]",
             "location": "[parameters('loc')]",
             "dependsOn": [
-                "[parameters('storageAccountName')]",
+                "[parameters('storageaccountname')]",
                 "[variables('nicName')]"
             ],
             "properties": {
                 "hardwareProfile": {
-                    "vmSize": "[parameters('vmSize')]"
+                    "vmSize": "[parameters('vmsize')]"
                 },
                 "osProfile": {
-                    "computerName": "[parameters('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
+                    "computerName": "[parameters('vmname')]",
+                    "adminUsername": "[parameters('adminusername')]",
+                    "adminPassword": "[parameters('adminpassword')]"
                 },
                 "storageProfile": {
                     "imageReference": {
                         "publisher": "MicrosoftWindowsServer",
                         "offer": "WindowsServer",
-                        "sku": "[parameters('windowsOSVersion')]",
+                        "sku": "[parameters('windowsosversion')]",
                         "version": "latest"
                     },
                     "osDisk": {
