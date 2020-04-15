@@ -85,7 +85,7 @@
                 "description": "Name of the virtual network"
             }
         },
-        "addressPrefixes": {
+        "addressPref": {
             "type": "String",
             "metadata": {
                 "description": "Address prefix of the virtual network"
@@ -197,7 +197,7 @@
             ],
             "properties": {
                 "addressSpace": {
-                    "addressPrefixes": "[parameters('addressPrefixes')]"
+                    "addressPrefixes": "[parameters('addressPref')]"
                 },
                 "subnets": [
                     {
