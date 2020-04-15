@@ -15,7 +15,7 @@
             "value": "VNetwrkName"
          },
          "addressPrefixes": {
-            "value": "AddrPrefix"
+            "value": "AddrPref"
          },
          "subnetName": {
             "value": "SnetName"
