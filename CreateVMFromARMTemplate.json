@@ -138,14 +138,15 @@
         "publicIpAddressId": {
             "id": "[resourceId(parameters('publicIpResourceGroupName'), 'Microsoft.Network/publicIPAddresses', parameters('publicIpName'))]"
         },
-        "networkSecurityGroupName": "default-NSG"
+        "networkSecurityGroupName": "default-NSG",
+        "osDiskName": "[concat(parameters('vmName'), '_OSDisk')]"
     },
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2017-06-01",
             "name": "[parameters('storageAccountName')]",
-            "location": "[parameters('location')]",
+            "location": "[parameters('Loc')]",
             "sku": {
                 "name": "[parameters('storageAccountType')]"
             },
@@ -262,6 +263,7 @@
                         "version": "latest"
                     },
                     "osDisk": {
+                        "name": "[parameters('osDiskName')]",
                         "createOption": "FromImage"
                     }
                 },
