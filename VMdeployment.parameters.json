@@ -8,9 +8,6 @@
         "adminPassword": {
             "value": "AdminPass"
         },
-        "virtualNetworkNewOrExisting": {
-             "value": "NotNew"
-        },
         "virtualNetworkName": {
             "value": "VNetwrkName"
         },
