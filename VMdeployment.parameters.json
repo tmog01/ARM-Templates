@@ -20,9 +20,6 @@
      "addressPref": {
           "value": "AddrPref"
      },
-     "subnetName": {
-          "value": "SnetName"
-     },
      "subnetPrefix": {
           "value": "AddrPrefix"
      }
