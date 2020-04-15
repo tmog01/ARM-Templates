@@ -1,27 +1,5 @@
-      "parameters": {
-         "vmName": {
-            "value": "VMName"
-         },
-         "adminUsername": {
-            "value": "AdminName"
-         },
-         "adminPassword": {
-            "value": "AdminPass"
-         },
-         "virtualNetworkNewOrExisting": {
-            "value": "NotNew"
-         },
-         "virtualNetworkName": {
-            "value": "VNetwrkName"
-         },
-         "addressPref": {
-            "value": "AddrPref"
-         },
-         "subnetName": {
-            "value": "SnetName"
-         },
-         "subnetPrefix": {
-            "value": "AddrPrefix"
-         },
-      }
-
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {}
+}
