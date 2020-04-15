@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "Loc": {
+        "loc": {
             "defaultValue": "[resourceGroup().location]",
             "type": "String",
             "metadata": {
@@ -146,7 +146,7 @@
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2017-06-01",
             "name": "[parameters('storageAccountName')]",
-            "location": "[parameters('Loc')]",
+            "location": "[parameters('loc')]",
             "sku": {
                 "name": "[parameters('storageAccountType')]"
             },
@@ -157,7 +157,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2017-09-01",
             "name": "[parameters('publicIpName')]",
-            "location": "[parameters('Loc')]",
+            "location": "[parameters('loc')]",
             "properties": {
                 "publicIPAllocationMethod": "Dynamic"
             },
@@ -167,7 +167,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2019-08-01",
             "name": "[variables('networkSecurityGroupName')]",
-            "location": "[parameters('Loc')]",
+            "location": "[parameters('loc')]",
             "properties": {
                 "securityRules": [
                     {
@@ -191,7 +191,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2017-09-01",
             "name": "[parameters('virtualNetworkName')]",
-            "location": "[parameters('Loc')]",
+            "location": "[parameters('loc')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
             ],
@@ -217,7 +217,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2017-09-01",
             "name": "[variables('nicName')]",
-            "location": "[parameters('Loc')]",
+            "location": "[parameters('loc')]",
             "dependsOn": [
                 "[parameters('publicIpName')]",
                 "[parameters('virtualNetworkName')]"
@@ -241,7 +241,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2017-03-30",
             "name": "[parameters('vmName')]",
-            "location": "[parameters('Loc')]",
+            "location": "[parameters('loc')]",
             "dependsOn": [
                 "[parameters('storageAccountName')]",
                 "[variables('nicName')]"
