@@ -263,7 +263,7 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "name": "[parameters('osDiskName')]",
+                        "name": "[variables('osDiskName')]",
                         "createOption": "FromImage"
                     }
                 },
