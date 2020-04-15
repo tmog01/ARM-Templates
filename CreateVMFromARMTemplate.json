@@ -4,32 +4,32 @@
     "parameters": {
         "loc": {
             "defaultValue": "[resourceGroup().location]",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Location to for the resources."
             }
         },
         "vmName": {
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Name for the Virtual Machine."
             }
         },
         "adminUsername": {
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "User name for the Virtual Machine."
             }
         },
         "adminPassword": {
-            "type": "SecureString",
+            "type": "securestring",
             "metadata": {
                 "description": "Password or ssh key for the Virtual Machine."
             }
         },
         "vmSize": {
             "defaultValue": "Standard_F4s_v2",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Size for the Virtual Machine."
             }
@@ -45,89 +45,89 @@
                 "2016-Datacenter",
                 "2019-Datacenter"
             ],
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version."
             }
         },
         "storageNewOrExisting": {
             "defaultValue": "new",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Determines whether or not a new storage account should be provisioned."
             }
         },
         "storageAccountName": {
             "defaultValue": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Name of the storage account"
             }
         },
         "storageAccountType": {
             "defaultValue": "Standard_LRS",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Storage account type"
             }
         },
         "virtualNetworkNewOrExisting": {
             "defaultValue": "new",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Determines whether or not a new virtual network should be provisioned."
             }
         },
         "virtualNetworkName": {
             "defaultValue": "VirtualNetwork",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Name of the virtual network"
             }
         },
         "addressPref": {
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Address prefix of the virtual network"
             }
         },
         "subnetName": {
             "defaultValue": "default",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Name of the subnet"
             }
         },
         "subnetPrefix": {
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Subnet prefix of the virtual network"
             }
         },
         "virtualNetworkResourceGroupName": {
             "defaultValue": "[resourceGroup().name]",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Name of the resource group for the existing virtual network"
             }
         },
         "publicIpNewOrExisting": {
             "defaultValue": "new",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Determines whether or not a new public ip should be provisioned."
             }
         },
         "publicIpName": {
             "defaultValue": "[concat(parameters('vmName'), '_Pip')]",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Name of the public ip address"
             }
         },
         "publicIpResourceGroupName": {
             "defaultValue": "[resourceGroup().name]",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Name of the resource group for the public ip address"
             }
