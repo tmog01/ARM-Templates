@@ -1,4 +1,4 @@
-    "parameters": {
+"parameters": {
         "vmName": {
             "value": "VMName"
          },
@@ -23,5 +23,5 @@
         "subnetPrefix": {
             "value": "AddrPrefix"
         },
-    }
+}
 
