@@ -11,7 +11,7 @@
      "adminpassword": {
           "value": "AdminPass"
      },
-     "virtualNetworkNewOrExisting": {
+     "virtualnetworkneworexisting": {
           "value": "NotNew"
      },
      "virtualnetworkname": {
