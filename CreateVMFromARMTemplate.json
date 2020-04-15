@@ -71,14 +71,14 @@
                 "description": "Storage account type"
             }
         },
-        "virtualnetworknewOrexisting": {
+        "virtualnetworkneworexisting": {
             "defaultValue": "new",
             "type": "string",
             "metadata": {
                 "description": "Determines whether or not a new virtual network should be provisioned."
             }
         },
-        "virtualbetworkname": {
+        "virtualnetworkname": {
             "defaultValue": "VirtualNetwork",
             "type": "string",
             "metadata": {
