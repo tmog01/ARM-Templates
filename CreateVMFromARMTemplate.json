@@ -119,7 +119,7 @@
             }
         },
         "publicIpName": {
-            "defaultValue": "PublicIp",
+            "defaultValue": "[concat(parameters('vmName'), '_Pip')]",
             "type": "String",
             "metadata": {
                 "description": "Name of the public ip address"
