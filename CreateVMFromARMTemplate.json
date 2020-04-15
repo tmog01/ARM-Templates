@@ -134,12 +134,12 @@
         }
     },
     "variables": {
-        "nicName": "[concat(parameters('vmName'), '-nic')]",
+        "nicName": "[concat(parameters('vmname'), '-nic')]",
         "publicIpAddressId": {
-            "id": "[resourceId(parameters('publicIpResourceGroupName'), 'Microsoft.Network/publicIPAddresses', parameters('publicIpName'))]"
+            "id": "[resourceId(parameters('publicipresourcegroupName'), 'Microsoft.Network/publicIPAddresses', parameters('publicipname'))]"
         },
         "networkSecurityGroupName": "default-NSG",
-        "osDiskName": "[concat(parameters('vmName'), '_OSDisk')]"
+        "osDiskName": "[concat(parameters('vmname'), '_OSDisk')]"
     },
     "resources": [
         {
@@ -229,7 +229,7 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "subnet": {
-                                "id": "[resourceId(parameters('virtualNetworkResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets/', parameters('virtualnetworkname'), parameters('subnetname'))]"
+                                "id": "[resourceId(parameters('virtualnetworkresourcegroupName'), 'Microsoft.Network/virtualNetworks/subnets/', parameters('virtualnetworkname'), parameters('subnetname'))]"
                             },
                             "publicIPAddress": "[if(not(equals(parameters('publicipneworexisting'), 'none')), variables('publicIpAddressId') , json('null'))]"
                         }
