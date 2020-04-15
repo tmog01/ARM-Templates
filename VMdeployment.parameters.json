@@ -1,27 +1,27 @@
 "parameters": {
-        "vmName": {
-            "value": "VMName"
-         },
-        "adminUsername": {
-            "value": "AdminName"
-        },
-        "adminPassword": {
-            "value": "AdminPass"
-        },
-        "virtualNetworkNewOrExisting": {
-             "value": "NotNew"
-        },
-        "virtualNetworkName": {
-            "value": "VNetwrkName"
-        },
-        "addressPrefixes": {
-            "value": "AddrPrefix"
-        },
-        "subnetName": {
-            "value": "SnetName"
-        },
-        "subnetPrefix": {
-            "value": "AddrPrefix"
-        },
+   "vmName": {
+     "value": "VMName"
+   },
+   "adminUsername": {
+     "value": "AdminName"
+   },
+   "adminPassword": {
+     "value": "AdminPass"
+   },
+   "virtualNetworkNewOrExisting": {
+      "value": "NotNew"
+   },
+   "virtualNetworkName": {
+      "value": "VNetwrkName"
+   },
+   "addressPrefixes": {
+      "value": "AddrPrefix"
+   },
+   "subnetName": {
+      "value": "SnetName"
+   },
+   "subnetPrefix": {
+      "value": "AddrPrefix"
+   },
 }
 
