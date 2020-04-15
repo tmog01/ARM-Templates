@@ -9,9 +9,9 @@
             "value": "AdminPass"
         },
         "virtualNetworkNewOrExisting": {
-            "value": "Notnew"
+             "value": null
         },
-        "-virtualNetworkName": {
+        "virtualNetworkName": {
             "value": "VNetwrkName"
         },
         "addressPrefixes": {
