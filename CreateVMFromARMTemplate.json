@@ -131,6 +131,12 @@
             "metadata": {
                 "description": "Name of the resource group for the public ip address"
             }
+        },
+        "NSGName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the NSG associated with the VNET"
+            }
         }
     },
     "variables": {
@@ -138,7 +144,7 @@
         "publicIpAddressId": {
             "id": "[resourceId(parameters('publicipresourcegroupName'), 'Microsoft.Network/publicIPAddresses', parameters('publicipname'))]"
         },
-        "networkSecurityGroupName": "default-NSG",
+        "networkSecurityGroupName": "[parameters('NSGName')]",
         "osDiskName": "[concat(parameters('vmname'), '_OSDisk')]"
     },
     "resources": [
@@ -185,7 +191,7 @@
                     }
                 ]
             },
-            "condition": "[equals(parameters('virtualnetworkneworexisting'), 'existing')]"
+            "condition": "[equals(parameters('virtualnetworkneworexisting'), 'new')]"
         },
         {
             "type": "Microsoft.Network/virtualNetworks",
@@ -211,7 +217,7 @@
                     }
                 ]
             },
-            "condition": "[equals(parameters('virtualnetworkneworexisting'), 'new')]"
+            "condition": "[equals(parameters('virtualnetworkneworexisting'), 'existing')]"
         },
         {
             "type": "Microsoft.Network/networkInterfaces",
