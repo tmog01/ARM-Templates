@@ -4,37 +4,37 @@
     "parameters": {
         "loc": {
             "defaultValue": "[resourceGroup().location]",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Location to for the resources."
             }
         },
-        "vmname": {
-            "type": "string",
+        "vmName": {
+            "type": "String",
             "metadata": {
                 "description": "Name for the Virtual Machine."
             }
         },
-        "adminusername": {
-            "type": "string",
+        "adminUsername": {
+            "type": "String",
             "metadata": {
                 "description": "User name for the Virtual Machine."
             }
         },
-        "adminpassword": {
-            "type": "securestring",
+        "adminPassword": {
+            "type": "String",
             "metadata": {
                 "description": "Password or ssh key for the Virtual Machine."
             }
         },
-        "vmsize": {
+        "vmSize": {
             "defaultValue": "Standard_F4s_v2",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Size for the Virtual Machine."
             }
         },
-        "windowsosversion": {
+        "windowsOSVersion": {
             "defaultValue": "2016-Datacenter",
             "allowedValues": [
                 "2008-R2-SP1",
@@ -45,144 +45,202 @@
                 "2016-Datacenter",
                 "2019-Datacenter"
             ],
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version."
             }
         },
-        "storageneworexisting": {
+        "createdBy": {
+            "defaultValue": "MyName",
+            "type": "String",
+            "metadata": {
+                "description": "Created By Tag"
+            }
+        },
+        "RFC-Number": {
+            "defaultValue": "RFC#",
+            "type": "String",
+            "metadata": {
+                "description": "RFC Number for this Change Request"
+            }
+        },
+        "storageNewOrExisting": {
             "defaultValue": "new",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Determines whether or not a new storage account should be provisioned."
             }
         },
-        "storageaccountname": {
+        "storageAccountName": {
             "defaultValue": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Name of the storage account"
             }
         },
-        "storageaccounttype": {
+        "storageAccountType": {
             "defaultValue": "Standard_LRS",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Storage account type"
             }
         },
-        "virtualnetworkneworexisting": {
+        "virtualNetworkNewOrExisting": {
             "defaultValue": "new",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Determines whether or not a new virtual network should be provisioned."
             }
         },
-        "virtualnetworkname": {
+        "virtualNetworkName": {
             "defaultValue": "VirtualNetwork",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Name of the virtual network"
             }
         },
-        "addresspref": {
-            "type": "string",
+        "addressPrefixes": {
+            "type": "String",
             "metadata": {
                 "description": "Address prefix of the virtual network"
             }
         },
-        "subnetname": {
+        "subnetName": {
             "defaultValue": "default",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Name of the subnet"
             }
         },
-        "subnetprefix": {
-            "type": "string",
+        "subnetPrefix": {
+            "type": "String",
             "metadata": {
                 "description": "Subnet prefix of the virtual network"
             }
         },
-        "virtualnetworkresourcegroupName": {
+        "virtualNetworkResourceGroupName": {
             "defaultValue": "[resourceGroup().name]",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Name of the resource group for the existing virtual network"
             }
         },
-        "publicipneworexisting": {
+        "publicIpNewOrExisting": {
             "defaultValue": "new",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Determines whether or not a new public ip should be provisioned."
             }
         },
-        "publicipname": {
+        "publicIpName": {
             "defaultValue": "[concat(parameters('vmName'), '_Pip')]",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Name of the public ip address"
             }
         },
-        "publicipresourcegroupName": {
+        "publicIpResourceGroupName": {
             "defaultValue": "[resourceGroup().name]",
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "Name of the resource group for the public ip address"
             }
         },
-        "NSGName": {
-            "type": "string",
+        "nsgName": {
+            "type": "String",
             "metadata": {
-                "description": "Name of the NSG associated with the VNET"
+                "description": "Name of the NSG to use with the Subnet"
+            }
+        },
+        "aadClientID": {
+            "type": "String",
+            "metadata": {
+                "description": "Client ID of AAD app which has permissions to KeyVault"
+            }
+        },
+        "aadClientSecret": {
+            "type": "String",
+            "metadata": {
+                "description": "Client Secret of AAD app which has permissions to KeyVault"
+            }
+        },
+        "keyVaultName": {
+            "type": "String",
+            "metadata": {
+                "description": "Name of the KeyVault to place the volume encryption key"
+            }
+        },
+        "keyVaultResourceGroup": {
+            "defaultValue": "[resourceGroup().name]",
+            "type": "String",
+            "metadata": {
+                "description": "Resource group of the KeyVault"
+            }
+        },
+        "keyEncryptionKeyURL": {
+            "defaultValue": "",
+            "type": "String",
+            "metadata": {
+                "description": "URL of the KeyEncryptionKey used to encrypt the volume encryption key"
             }
         }
     },
     "variables": {
-        "nicName": "[concat(parameters('vmname'), '-nic')]",
+        "nicName": "[concat(parameters('vmName'), '-nic')]",
         "publicIpAddressId": {
-            "id": "[resourceId(parameters('publicipresourcegroupName'), 'Microsoft.Network/publicIPAddresses', parameters('publicipname'))]"
+            "id": "[resourceId(parameters('publicIpResourceGroupName'), 'Microsoft.Network/publicIPAddresses', parameters('publicIpName'))]"
         },
-        "networkSecurityGroupName": "[parameters('NSGName')]",
-        "osDiskName": "[concat(parameters('vmname'), '_OSDisk')]"
+        "networkSecurityGroupName": "[parameters('nsgName')]",
+        "osDiskName": "[concat(parameters('vmName'), '_OSDisk')]"
     },
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2017-06-01",
-            "name": "[parameters('storageaccountname')]",
+            "name": "[parameters('storageAccountName')]",
             "location": "[parameters('loc')]",
+            "tags": {
+                "Created By": "[parameters('createdBy')]",
+                "RFC Number": "[parameters('RFC-Number')]"
+            },
             "sku": {
-                "name": "[parameters('storageaccounttype')]"
+                "name": "[parameters('storageAccountType')]"
             },
             "kind": "Storage",
-            "condition": "[equals(parameters('storageneworexisting'), 'new')]"
+            "condition": "[equals(parameters('storageNewOrExisting'), 'new')]"
         },
         {
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2017-09-01",
-            "name": "[parameters('publicipname')]",
+            "name": "[parameters('publicIpName')]",
             "location": "[parameters('loc')]",
+            "tags": {
+                "Created By": "[parameters('createdBy')]",
+                "RFC Number": "[parameters('RFC-Number')]"
+            },
             "properties": {
                 "publicIPAllocationMethod": "Dynamic"
             },
-            "condition": "[equals(parameters('publicipneworexisting'), 'new')]"
+            "condition": "[equals(parameters('publicIpNewOrExisting'), 'new')]"
         },
         {
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2019-08-01",
             "name": "[variables('networkSecurityGroupName')]",
             "location": "[parameters('loc')]",
+            "tags": {
+                "Created By": "[parameters('createdBy')]",
+                "RFC Number": "[parameters('RFC-Number')]"
+            },
             "properties": {
                 "securityRules": [
                     {
-                        "name": "default-allow-22",
+                        "name": "Allow-RDP",
                         "properties": {
                             "priority": 1000,
                             "access": "Allow",
                             "direction": "Inbound",
-                            "destinationPortRange": "22",
+                            "destinationPortRange": "3389",
                             "protocol": "Tcp",
                             "sourceAddressPrefix": "*",
                             "sourcePortRange": "*",
@@ -191,25 +249,29 @@
                     }
                 ]
             },
-            "condition": "[equals(parameters('virtualnetworkneworexisting'), 'new')]"
+            "condition": "[equals(parameters('virtualNetworkNewOrExisting'), 'new')]"
         },
         {
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2017-09-01",
-            "name": "[parameters('virtualnetworkname')]",
+            "name": "[parameters('virtualNetworkName')]",
             "location": "[parameters('loc')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
             ],
+            "tags": {
+                "Created By": "[parameters('createdBy')]",
+                "RFC Number": "[parameters('RFC-Number')]"
+            },
             "properties": {
                 "addressSpace": {
-                    "addressPrefixes": "[parameters('addresspref')]"
+                    "addressPrefixes": "[parameters('addressPrefixes')]"
                 },
                 "subnets": [
                     {
-                        "name": "[parameters('subnetname')]",
+                        "name": "[parameters('subnetName')]",
                         "properties": {
-                            "addressPrefix": "[parameters('subnetprefix')]",
+                            "addressPrefix": "[parameters('subnetPrefix')]",
                             "networkSecurityGroup": {
                                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
                             }
@@ -217,7 +279,7 @@
                     }
                 ]
             },
-            "condition": "[equals(parameters('virtualnetworkneworexisting'), 'existing')]"
+            "condition": "[equals(parameters('virtualNetworkNewOrExisting'), 'existing')]"
         },
         {
             "type": "Microsoft.Network/networkInterfaces",
@@ -225,9 +287,13 @@
             "name": "[variables('nicName')]",
             "location": "[parameters('loc')]",
             "dependsOn": [
-                "[parameters('publicipname')]",
-                "[parameters('virtualnetworkname')]"
+                "[parameters('publicIpName')]",
+                "[parameters('virtualNetworkName')]"
             ],
+            "tags": {
+                "Created By": "[parameters('createdBy')]",
+                "RFC Number": "[parameters('RFC-Number')]"
+            },
             "properties": {
                 "ipConfigurations": [
                     {
@@ -235,9 +301,9 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "subnet": {
-                                "id": "[resourceId(parameters('virtualnetworkresourcegroupName'), 'Microsoft.Network/virtualNetworks/subnets/', parameters('virtualnetworkname'), parameters('subnetname'))]"
+                                "id": "[resourceId(parameters('virtualNetworkResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets/', parameters('virtualNetworkName'), parameters('subnetName'))]"
                             },
-                            "publicIPAddress": "[if(not(equals(parameters('publicipneworexisting'), 'none')), variables('publicIpAddressId') , json('null'))]"
+                            "publicIPAddress": "[if(not(equals(parameters('publicIpNewOrExisting'), 'none')), variables('publicIpAddressId') , json('null'))]"
                         }
                     }
                 ]
@@ -246,26 +312,30 @@
         {
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2017-03-30",
-            "name": "[parameters('vmname')]",
+            "name": "[parameters('vmName')]",
             "location": "[parameters('loc')]",
             "dependsOn": [
-                "[parameters('storageaccountname')]",
+                "[parameters('storageAccountName')]",
                 "[variables('nicName')]"
             ],
+            "tags": {
+                "Created By": "[parameters('createdBy')]",
+                "RFC Number": "[parameters('RFC-Number')]"
+            },
             "properties": {
                 "hardwareProfile": {
-                    "vmSize": "[parameters('vmsize')]"
+                    "vmSize": "[parameters('vmSize')]"
                 },
                 "osProfile": {
-                    "computerName": "[parameters('vmname')]",
-                    "adminUsername": "[parameters('adminusername')]",
-                    "adminPassword": "[parameters('adminpassword')]"
+                    "computerName": "[parameters('vmName')]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]"
                 },
                 "storageProfile": {
                     "imageReference": {
                         "publisher": "MicrosoftWindowsServer",
                         "offer": "WindowsServer",
-                        "sku": "[parameters('windowsosversion')]",
+                        "sku": "[parameters('windowsOSVersion')]",
                         "version": "latest"
                     },
                     "osDisk": {
@@ -283,6 +353,41 @@
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": false
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "name": "UpdateEncryptionSettings",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-encrypt-running-windows-vm/azuredeploy.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "vmName": {
+                        "value": "[parameters('vmName')]"
+                    },
+                    "aadClientID": {
+                        "value": "[parameters('aadClientID')]"
+                    },
+                    "aadClientSecret": {
+                        "value": "[parameters('aadClientSecret')]"
+                    },
+                    "keyVaultName": {
+                        "value": "[parameters('keyVaultName')]"
+                    },
+                    "keyVaultResourceGroup": {
+                        "value": "[parameters('keyVaultResourceGroup')]"
+                    },
+                    "keyEncryptionKeyURL": {
+                        "value": "[parameters('keyEncryptionKeyURL')]"
                     }
                 }
             }
