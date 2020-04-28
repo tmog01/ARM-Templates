@@ -20,8 +20,14 @@
      "addresspref": {
           "value": "AddrPref"
      },
+     "subnetname": {
+          "value": "subnet-name"
+     },
      "subnetprefix": {
           "value": "AddrPrefix"
+     },
+     "NSGName": {
+          "value": "VM-NSG"
      }
   }
 }
