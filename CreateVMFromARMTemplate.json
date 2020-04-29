@@ -279,7 +279,7 @@
                     }
                 ]
             },
-            "condition": "[equals(parameters('virtualNetworkNewOrExisting'), 'existing')]"
+            "condition": "[equals(parameters('virtualNetworkNewOrExisting'), 'new')]"
         },
         {
             "type": "Microsoft.Network/networkInterfaces",
