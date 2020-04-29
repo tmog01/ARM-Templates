@@ -26,8 +26,23 @@
      "subnetprefix": {
           "value": "AddrPrefix"
      },
-     "NSGName": {
+     "nsgName": {
           "value": "VM-NSG"
-     }
+     },
+      "aadClientID": {
+          "value": "AADclientid"
+     },
+      "aadClientSecret": {
+           "value": "AADclientsecret"
+     },
+      "keyVaultName": {
+           "value": "Keyvaultname"
+     },
+      "keyVaultResourceGroup": {
+          "value": "Keyvaultrg"
+     },
+      "keyEncryptionKeyURL": {
+          "value": "Keyencrypturl"
+    }
   }
 }
