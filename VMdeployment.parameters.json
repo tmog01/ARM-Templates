@@ -26,7 +26,7 @@
      "virtualNetworkName": {
           "value": "VNetwrkName"
      },
-     "addressPrefix": {
+     "addressPrefixes": {
           "value": "AddrPref"
      },
      "subnetName": {
