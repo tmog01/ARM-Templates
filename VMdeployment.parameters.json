@@ -2,34 +2,43 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "vmname": {
+    "vmName": {
          "value": "VMName"
      },
-     "adminusername": {
+     "adminUsername": {
           "value": "AdminName"
      },
-     "adminpassword": {
+     "adminPassword": {
           "value": "AdminPass"
      },
-     "virtualnetworkneworexisting": {
+     "vmSize": {
+          "value": "StndardD3"
+     },
+     "storageNewOrExisting": {
+           "value": "NotNew"
+     },
+     "storageAccountName": {
+           "value": "StorgAccName"
+     },
+     "virtualNetworkNewOrExisting": {
           "value": "NotNew"
      },
-     "virtualnetworkname": {
+     "virtualNetworkName": {
           "value": "VNetwrkName"
      },
-     "addresspref": {
+     "addressPrefix": {
           "value": "AddrPref"
      },
-     "subnetname": {
+     "subnetName": {
           "value": "subnet-name"
      },
-     "subnetprefix": {
+     "subnetPrefix": {
           "value": "AddrPrefix"
      },
      "nsgName": {
           "value": "VM-NSG"
      },
-     "Created-by": {
+     "createdBy": {
           "value": "John Doe"
      },
      "RFC-Number": {
