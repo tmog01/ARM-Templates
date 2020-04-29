@@ -29,6 +29,12 @@
      "nsgName": {
           "value": "VM-NSG"
      },
+     "Created-by": {
+          "value": "John Doe"
+     },
+     "RFC-Number": {
+          "value": "RFC#"
+     },
       "aadClientID": {
           "value": "AADclientid"
      },
