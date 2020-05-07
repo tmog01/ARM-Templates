@@ -152,18 +152,6 @@
                 "description": "Name of the NSG to use with the Subnet"
             }
         },
-        "aadClientID": {
-            "type": "String",
-            "metadata": {
-                "description": "Client ID of AAD app which has permissions to KeyVault"
-            }
-        },
-        "aadClientSecret": {
-            "type": "String",
-            "metadata": {
-                "description": "Client Secret of AAD app which has permissions to KeyVault"
-            }
-        },
         "keyVaultName": {
             "type": "String",
             "metadata": {
@@ -367,18 +355,12 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-encrypt-running-windows-vm/azuredeploy.json",
+                    "uri": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-encrypt-running-windows-vm-without-aad/azuredeploy.json",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
                     "vmName": {
                         "value": "[parameters('vmName')]"
-                    },
-                    "aadClientID": {
-                        "value": "[parameters('aadClientID')]"
-                    },
-                    "aadClientSecret": {
-                        "value": "[parameters('aadClientSecret')]"
                     },
                     "keyVaultName": {
                         "value": "[parameters('keyVaultName')]"
