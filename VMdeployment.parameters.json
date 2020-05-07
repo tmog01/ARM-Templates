@@ -44,13 +44,7 @@
      "RFC-Number": {
           "value": "RFC#"
      },
-      "aadClientID": {
-          "value": "AADclientid"
-     },
-      "aadClientSecret": {
-           "value": "AADclientsecret"
-     },
-      "keyVaultName": {
+     "keyVaultName": {
            "value": "Keyvaultname"
      },
       "keyEncryptionKeyURL": {
